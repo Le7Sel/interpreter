@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from random import randint
 import re
 import fileinput
@@ -32,14 +33,20 @@ def replace_random(data, find, replace):
     data = before + after
     return data
 
+no_error = True
 while True:
     if (instructions == [] or data == ""):
         break
     else:
         index = randint(1,len(instructions)) - 1
         regex_result = re.search(pattern, instructions[index])
-        find = regex_result.group(1)
-        replace = regex_result.group(2)
+        try:
+            find = regex_result.group(1)
+            replace = regex_result.group(2)
+        except:
+            print("Error line :", index)
+            no_error = False
+            break
         if (not find in data):
             discarded_instructions.append(instructions.pop(index))
             continue
@@ -57,5 +64,6 @@ while True:
             while discarded_instructions != []:
                 instructions.append(discarded_instructions.pop())
 
-print('data: ',data)
-print(result)
+if no_error:
+    print('data: ',data)
+    print(result)

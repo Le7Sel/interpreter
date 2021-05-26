@@ -14,4 +14,6 @@ Thue rules:
 ```bash
 python3 thue.py
 ```
-Typing this command will ask for a file name to read containing the thue program. Once entered, it will run the thue program.
+Typing this command will ask for a file name to read containing the thue program. Once entered, it will run the thue program and show the steps and instructions it is following.
+
+There is a sample programm '**adder**' to test thue.py which adds 2 integers.
